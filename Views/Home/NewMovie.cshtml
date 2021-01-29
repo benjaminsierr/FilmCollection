@@ -39,21 +39,21 @@
                                 <option value="action">Action</option>
                                 <option value="comedy">Comedy</option>
                             </select>
-                            <p class="help-block text-danger"></p>
+                            <div style="font-style: italic; font-size: .9rem; color: #ff0000;">@Html.ValidationMessageFor(model => model.Category)</div>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label asp-for="Year">Year</label>
                             <input asp-for="Year" class="form-control" id="year" type="number" name="year" placeholder="Year" />
-                            <p class="help-block text-danger"></p>
+                            <div style="font-style: italic; font-size: .9rem; color: #ff0000;">@Html.ValidationMessageFor(model => model.Year)</div>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label asp-for="Director">Director</label>
                             <input asp-for="Director" type="text" class="form-control" id="director" name="director" placeholder="Director">
-                            <p class="help-block text-danger"></p>
+                            <div style="font-style: italic; font-size: .9rem; color: #ff0000;">@Html.ValidationMessageFor(model => model.Director)</div>
                         </div>
                     </div>
                     <div class="control-group">
@@ -66,7 +66,7 @@
                                 <option value="PG-13">PG-13</option>
                                 <option value="R">R</option>
                             </select>
-                            <p class="help-block text-danger"></p>
+                            <div style="font-style: italic; font-size: .9rem; color: #ff0000;">@Html.ValidationMessageFor(model => model.Rating)</div>
                         </div>
                     </div>
                     <div class="control-group">
@@ -77,21 +77,18 @@
                                 <option value="true">Yes</option>
                                 <option value="false">No</option>
                             </select>
-                            <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label asp-for="LentTo">Lent To:</label>
                             <input asp-for="LentTo" type="text" class="form-control" id="lentto" name="lentto" placeholder="Lent to">
-                            <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label asp-for="Notes">Notes</label>
                             <textarea asp-for="Notes" class="form-control" id="notes" name="notes" rows="5" placeholder="Notes"></textarea>
-                            <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <br />
