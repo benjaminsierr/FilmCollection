@@ -18,6 +18,7 @@ namespace FilmCollection.Models
         [Required(ErrorMessage = "This field is required")]
         public string Category { get; set; }
         [Required(ErrorMessage = "This field is required")]
+        [RegularExpression("^((?!Independence Day).)*$", ErrorMessage = "Independence Day is not a Valid Movie")]
         public string Title { get; set; }
         [Required(ErrorMessage = "This field is required")]
         public int Year { get; set; }
