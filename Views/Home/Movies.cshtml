@@ -19,7 +19,7 @@
         </div>
         <!-- Portfolio Grid Items-->
         <div class="row justify-content-center">
-            @foreach (FilmCollection.Models.Movie m in Model)
+            @foreach (FilmCollection.Models.Movie m in Model.Where(r => r.Title != "Independence Day"))
             {
                 <!-- Portfolio Item 1-->
                 <div class="col-md-6 col-lg-4 mb-5">

@@ -39,6 +39,7 @@ namespace FilmCollection.Controllers
             }
             MovieList.AddMovie(movie);
             Debug.WriteLine("Title: " + movie.Title);
+
             return View("Movies", MovieList.Movies);
         }
 
