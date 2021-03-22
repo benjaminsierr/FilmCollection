@@ -6,16 +6,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using FilmCollection.Models.ViewModels;
 
 namespace FilmCollection.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private FilmCollectionRepository _repository;
+        public HomeController(ILogger<HomeController> logger, FilmCollectionRepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         public IActionResult Index()
@@ -35,19 +37,20 @@ namespace FilmCollection.Controllers
             if (!ModelState.IsValid)
             {
                 return View();
-                
             }
-            MovieList.AddMovie(movie);
-            Debug.WriteLine("Title: " + movie.Title);
+            
 
-            return View("Movies", MovieList.Movies);
+            return View("Movies");
         }
 
 
 
         public IActionResult Movies()
         {
-            return View();
+            return View(new MovieList
+            {
+                Movies = _repository.Movies
+            }); ;
         }
 
         public IActionResult Privacy()

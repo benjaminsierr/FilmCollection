@@ -2,7 +2,7 @@
     ViewBag.title = "Movies";
 }
 
-@model IEnumerable<FilmCollection.Models.Movie>
+@model IQueryable<Movie>
 
 <br />
 <br />
@@ -19,7 +19,7 @@
         </div>
         <!-- Portfolio Grid Items-->
         <div class="row justify-content-center">
-            @foreach (FilmCollection.Models.Movie m in Model.Where(r => r.Title != "Independence Day"))
+            @foreach (Movie m in Model.Where(r => r.Title != "Independence Day"))
             {
                 <!-- Portfolio Item 1-->
                 <div class="col-md-6 col-lg-4 mb-5">
