@@ -79,7 +79,7 @@ namespace FilmCollection.Controllers
                 Context.SaveChanges();
                 return View("Movies", new MovieList
                 {
-                    Movies = Context.Movies
+                    Movies = Context.Movies.Where(x => x.Title != "Independence Day")
                 }); ;
             }
             else
