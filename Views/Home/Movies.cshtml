@@ -26,7 +26,6 @@
                     <div class="portfolio-item mx-auto">
                         
                         <div style="margin: 25px;">
-                            <h3>@m.MovieID</h3>
                             <h3>@m.Title</h3>
                             <p>Category - @m.Category</p>
                             <p>Year - @m.Year</p>
@@ -34,7 +33,7 @@
                             <p>Edited - @m.Edited</p>
                             <p>Lent to: @m.LentTo</p>
                             <p>@m.Notes</p>
-                            <div>
+                            <div style="display:flex;flex-direction:row;">
                                 <a class="btn btn-info" asp-action="EditMoviePage" asp-route-id=@m.MovieID>Edit</a>
                                 <form asp-action="DeleteMovie" method="post">
                                     <input value=@m.MovieID type="hidden" />
