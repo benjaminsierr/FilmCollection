@@ -18,7 +18,7 @@ namespace FilmCollection.Controllers
         private MoviesDbContext Context;
         private Movie DeletedMovie;
         private Movie ToEdit;
-        private Movie EditedMovie;
+        public int mid;
         public HomeController(ILogger<HomeController> logger, MoviesDbContext con)
         {
             _logger = logger;
@@ -63,20 +63,29 @@ namespace FilmCollection.Controllers
             });;
         }
 
-        
+        public IActionResult EditMoviePage(int id)
+        {
+            Number.mid = id;
+            ToEdit = Context.Movies.First(x => x.MovieID == id);
+            return View("EditMovie", ToEdit);
+        }
         public IActionResult EditMovie(Movie movie)
         {
             if (Request.Method == "POST")
             {
-                EditedMovie = movie;
+
+                movie.MovieID = Number.mid;
+                Context.Update(movie);
                 Context.SaveChanges();
                 return View("Movies", new MovieList
                 {
                     Movies = Context.Movies
                 }); ;
             }
-            ToEdit = Context.Movies.First(x => x.MovieID == movie.MovieID);
-            return View("EditMovie", ToEdit);
+            else
+            {
+                return View("Index");
+            }
         }
 
 

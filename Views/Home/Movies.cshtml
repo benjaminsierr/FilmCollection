@@ -35,10 +35,7 @@
                             <p>Lent to: @m.LentTo</p>
                             <p>@m.Notes</p>
                             <div>
-                                <form asp-action="EditMovie" method="get">
-                                    <input value=@m.MovieID type="hidden" />
-                                    <input value="Edit" type="submit" class="btn btn-info" />
-                                </form>
+                                <a class="btn btn-info" asp-action="EditMoviePage" asp-route-id=@m.MovieID>Edit</a>
                                 <form asp-action="DeleteMovie" method="post">
                                     <input value=@m.MovieID type="hidden" />
                                     <input value="Delete" type="submit" class="btn btn-danger" />

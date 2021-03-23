@@ -9,8 +9,8 @@
 <form id="contactForm" name="sentMessage" novalidate="novalidate" method="post" asp-action="EditMovie">
     <div class="control-group">
         <div class="form-group floating-label-form-group controls mb-0 pb-2">
-            <label asp-for="MovieID" display="none"></label>
-            <input type="hidden" />
+            <label asp-for="MovieID"></label>
+            <input asp-for="MovieID" type="hidden" value="7" name="movieid"/>
             <label asp-for="Title">Title</label>
             <input class="form-control" asp-form="Movie" value="@Model.Title" id="title" name="title" type="text" placeholder="Title" />
             <div style="font-style: italic; font-size: .9rem; color: #ff0000;">@Html.ValidationMessageFor(model => model.Title)</div>
