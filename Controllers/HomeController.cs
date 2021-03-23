@@ -7,21 +7,27 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using FilmCollection.Models.ViewModels;
+using System.Net.Http;
 
 namespace FilmCollection.Controllers
 {
     public class HomeController : Controller
     {
+        
         private readonly ILogger<HomeController> _logger;
-        private FilmCollectionRepository _repository;
-        public HomeController(ILogger<HomeController> logger, FilmCollectionRepository repository)
+        private MoviesDbContext Context;
+        private Movie DeletedMovie;
+        private Movie ToEdit;
+        private Movie EditedMovie;
+        public HomeController(ILogger<HomeController> logger, MoviesDbContext con)
         {
             _logger = logger;
-            _repository = repository;
+            Context = con;
         }
 
         public IActionResult Index()
         {
+            Context.Database.EnsureCreated();
             return View();
         }
 
@@ -38,9 +44,13 @@ namespace FilmCollection.Controllers
             {
                 return View();
             }
-            
 
-            return View("Movies");
+            Context.Movies.Add(movie);
+            Context.SaveChanges();
+            return View("Movies",new MovieList
+            {
+                Movies = Context.Movies.Where(x => x.Title != "Independence Day")
+            });
         }
 
 
@@ -49,7 +59,36 @@ namespace FilmCollection.Controllers
         {
             return View(new MovieList
             {
-                Movies = _repository.Movies
+                Movies = Context.Movies.Where(x => x.Title != "Independence Day")
+            });;
+        }
+
+        
+        public IActionResult EditMovie(Movie movie)
+        {
+            if (Request.Method == "POST")
+            {
+                EditedMovie = movie;
+                Context.SaveChanges();
+                return View("Movies", new MovieList
+                {
+                    Movies = Context.Movies
+                }); ;
+            }
+            ToEdit = Context.Movies.First(x => x.MovieID == movie.MovieID);
+            return View("EditMovie", ToEdit);
+        }
+
+
+        [HttpPost("DeleteMovie")]
+        public IActionResult DeleteMovie(Movie movie)
+        {
+            DeletedMovie = Context.Movies.First(x => x.MovieID != movie.MovieID);
+            Context.Movies.Remove(DeletedMovie);
+            Context.SaveChanges();
+            return View("Movies", new MovieList
+            {
+                Movies = Context.Movies.Where(x => x.Title != "Independence Day")
             }); ;
         }
 

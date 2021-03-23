@@ -3,16 +3,14 @@ using System;
 using FilmCollection.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FilmCollection.Migrations
 {
-    [DbContext(typeof(FilmCollectionContext))]
-    [Migration("20210322142507_Initial")]
-    partial class Initial
+    [DbContext(typeof(MoviesDbContext))]
+    partial class MoviesDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

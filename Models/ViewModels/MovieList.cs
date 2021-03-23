@@ -7,6 +7,6 @@ namespace FilmCollection.Models.ViewModels
 {
     public class MovieList
     {
-        public IEnumerable<Movie> Movies { get; set; }
+        public IQueryable<Movie> Movies { get; set; }
     }
 }

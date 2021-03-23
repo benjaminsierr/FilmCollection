@@ -2,7 +2,7 @@
     ViewBag.title = "Movies";
 }
 
-@model IQueryable<Movie>
+@model MovieList
 
 <br />
 <br />
@@ -19,15 +19,14 @@
         </div>
         <!-- Portfolio Grid Items-->
         <div class="row justify-content-center">
-            @foreach (Movie m in Model.Where(r => r.Title != "Independence Day"))
+            @foreach (Movie m in Model.Movies)
             {
                 <!-- Portfolio Item 1-->
                 <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
+                    <div class="portfolio-item mx-auto">
+                        
                         <div style="margin: 25px;">
+                            <h3>@m.MovieID</h3>
                             <h3>@m.Title</h3>
                             <p>Category - @m.Category</p>
                             <p>Year - @m.Year</p>
@@ -35,7 +34,18 @@
                             <p>Edited - @m.Edited</p>
                             <p>Lent to: @m.LentTo</p>
                             <p>@m.Notes</p>
+                            <div>
+                                <form asp-action="EditMovie" method="get">
+                                    <input value=@m.MovieID type="hidden" />
+                                    <input value="Edit" type="submit" class="btn btn-info" />
+                                </form>
+                                <form asp-action="DeleteMovie" method="post">
+                                    <input value=@m.MovieID type="hidden" />
+                                    <input value="Delete" type="submit" class="btn btn-danger" />
+                                </form>
+                            </div>
                         </div>
+                        
                     </div>
                 </div>
             }

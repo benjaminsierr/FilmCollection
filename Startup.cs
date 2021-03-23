@@ -27,12 +27,11 @@ namespace FilmCollection
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<FilmCollectionContext>(options =>
+            services.AddDbContext<MoviesDbContext>(options =>
             {
                 options.UseSqlite(Configuration["ConnectionStrings:BookStoreConnection"]);
             });
 
-            services.AddScoped<FilmCollectionRepository, EFFilmCollectionRepository>();
 
         }
 
