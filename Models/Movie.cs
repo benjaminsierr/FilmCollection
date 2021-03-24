@@ -11,6 +11,8 @@ using System.ComponentModel.DataAnnotations;
 //Edited
 //Lent To:
 //Notes
+
+//movie model
 namespace FilmCollection.Models
 {
     public class Movie
