@@ -15,6 +15,9 @@ namespace FilmCollection.Models
 {
     public class Movie
     {
+        [Key]
+        [Required]
+        public int MovieID { get; set; }
         [Required(ErrorMessage = "This field is required")]
         public string Category { get; set; }
         [Required(ErrorMessage = "This field is required")]
