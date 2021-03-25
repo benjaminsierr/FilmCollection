@@ -35,10 +35,7 @@
                             <p>@m.Notes</p>
                             <div style="display:flex;flex-direction:row;">
                                 <a class="btn btn-info" asp-action="EditMoviePage" asp-route-id=@m.MovieID>Edit</a>
-                                <form asp-action="DeleteMovie" method="post">
-                                    <input value=@m.MovieID type="hidden" />
-                                    <input value="Delete" type="submit" class="btn btn-danger" />
-                                </form>
+                                <a class="btn btn-danger" asp-action="DeleteMovie" asp-route-id=@m.MovieID>Delete</a>
                             </div>
                         </div>
                         

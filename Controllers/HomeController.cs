@@ -96,10 +96,10 @@ namespace FilmCollection.Controllers
         }
 
         //delete movie when button is pressed; return to movies
-        [HttpPost("DeleteMovie")]
-        public IActionResult DeleteMovie(Movie movie)
+        public IActionResult DeleteMovie(int id)
         {
-            DeletedMovie = Context.Movies.First(x => x.MovieID != movie.MovieID);
+            
+            DeletedMovie = Context.Movies.First(x => x.MovieID == id);
             Context.Movies.Remove(DeletedMovie);
             Context.SaveChanges();
             return View("Movies", new MovieList
